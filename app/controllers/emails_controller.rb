@@ -9,10 +9,10 @@ class EmailsController < ApplicationController
 
     respond_to do |format|
       if @email.valid?
+        # Enviar para a outra aplicação
         return render :text => params[:email][:email]
       else
         format.html { render action: "index" }
-        format.json { render json: @email.errors, status: :unprocessable_entity }
       end
     end
   end
