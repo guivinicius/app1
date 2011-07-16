@@ -15,6 +15,5 @@ group :test, :development do
 	gem "capybara"
 	gem 'simplecov', :require => false
 	gem "shoulda-matchers"
-	gem 'factory_girl_rails'
 	gem "ruby-debug19"
 end

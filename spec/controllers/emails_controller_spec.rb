@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe IndexController do
+describe EmailsController do
   
   context "GET index" do
     
