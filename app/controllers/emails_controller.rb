@@ -9,8 +9,23 @@ class EmailsController < ApplicationController
 
     respond_to do |format|
       if @email.valid?
-        # Enviar para a outra aplicação
-        return render :text => params[:email][:email]
+        require 'net/http'
+        
+        url_email = URI.parse('http://0.0.0.0:3001/emails')
+        # url_login = URI.parse('http://0.0.0.0:3001/users/sign_in')
+        
+        # Logando na aplicacao
+        # login_args = { 'email' => 'gui.vinicius@gmail.com', "password" => "g7895123" }
+        # resp, data = Net::HTTP.post_form(url_login, login_args)
+        
+        # return render :text => data
+        
+        # Enviando email
+        post_args = {:email => params[:email][:email]}
+        resp, data = Net::HTTP.post_form(url_email, post_args)
+        
+        return render :text => data
+        
       else
         format.html { render action: "index" }
       end
